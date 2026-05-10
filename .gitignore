@@ -1,5 +1,7 @@
 # Dependencies
 node_modules/
+/client/node_modules/
+/server/node_modules/
 .pnp
 .pnp.js
 
@@ -7,24 +9,20 @@ node_modules/
 dist/
 build/
 .next/
+client/.vite/
+*.tsbuildinfo
 
-# Environment files (never commit secrets)
+# Environment files (NEVER commit secrets)
 .env
 .env.local
 .env.development.local
 .env.test.local
 .env.production.local
-# Keep .env.example (template)
-!.env.example
+.env.*.local
+*.env
 
-# Database files
-*.db
-*.db-journal
-*.sqlite
-*.sqlite3
-server/prisma/dev.db
-server/prisma/dev.db-journal
-server/prisma/migrations/
+# Keep .env.example as a template for others
+!.env.example
 
 # Logs
 logs/
@@ -34,17 +32,21 @@ yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
 
-# Runtime data
+# Database & Runtime
+# *.db (Un-ignored to allow pushing the pre-configured database)
+# *.sqlite
+*.db-journal
+*.sqlite3
+!server/prisma/dev.db
+server/prisma/dev.db-journal
+server/prisma/migrations/
+server/node_modules/.prisma/
 pids/
 *.pid
 *.seed
 *.pid.lock
 
-# Coverage
-coverage/
-.nyc_output
-
-# Editor files
+# IDEs & OS
 .vscode/
 .idea/
 *.swp
@@ -53,18 +55,8 @@ coverage/
 .DS_Store
 Thumbs.db
 
-# Uploads (user-uploaded files, not source code)
+# Uploads (user-generated content)
 server/uploads/covers/*
 server/uploads/avatars/*
-# Keep the folder structure
 !server/uploads/covers/.gitkeep
 !server/uploads/avatars/.gitkeep
-
-# TypeScript build cache
-*.tsbuildinfo
-
-# Prisma generated client (regenerated on install)
-server/node_modules/.prisma/
-
-# Vite cache
-client/.vite/

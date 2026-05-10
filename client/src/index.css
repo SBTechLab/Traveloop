@@ -161,11 +161,11 @@
   }
 
   .input-field {
-    @apply w-full bg-surface-container-lowest border border-outline-variant text-on-surface rounded-lg px-4 py-3 font-sans outline-none transition-all focus:border-primary focus:ring-2 focus:ring-primary/20 placeholder:opacity-50;
+    @apply w-full bg-surface-container-lowest border border-outline-variant text-on-surface rounded-lg px-4 py-3 font-sans outline-none transition-all focus:border-primary focus:ring-2 focus:ring-primary placeholder:opacity-50;
   }
 
   .glass {
-    @apply bg-surface/80 backdrop-blur-md border border-outline-variant;
+    @apply bg-surface backdrop-blur-md border border-outline-variant;
   }
 
   .page-container {

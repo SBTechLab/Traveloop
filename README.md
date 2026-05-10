@@ -19,9 +19,10 @@ A full-stack travel planning web application. Plan trips, build itineraries, tra
 
 ```bash
 cd server
-cp ../.env.example .env          # copy env file
+cp .env.example .env              # copy env file
 npm install                       # install deps
-npx prisma migrate dev --name init  # create DB + tables
+npx prisma generate               # generate Prisma client
+npx prisma migrate dev --name init # create DB + tables
 npm run seed                      # seed demo data
 npm run dev                       # start server on :5000
 ```
