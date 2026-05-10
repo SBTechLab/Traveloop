@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Traveloop | Itinerary Builder</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&amp;family=Noto+Serif:wght@600;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-container": "#929ab2",
+                    "secondary": "#c0c1ff",
+                    "inverse-surface": "#d8e3fb",
+                    "surface-variant": "#2a3548",
+                    "on-tertiary-fixed": "#131b2e",
+                    "primary-fixed-dim": "#ffb690",
+                    "on-tertiary-fixed-variant": "#3f465c",
+                    "primary": "#ffb690",
+                    "surface-dim": "#081425",
+                    "on-surface": "#d8e3fb",
+                    "inverse-on-surface": "#263143",
+                    "on-secondary-fixed-variant": "#2f2ebe",
+                    "outline-variant": "#584237",
+                    "tertiary-fixed": "#dae2fd",
+                    "error-container": "#93000a",
+                    "surface": "#081425",
+                    "surface-container-high": "#1f2a3c",
+                    "on-primary": "#552100",
+                    "primary-container": "#f97316",
+                    "outline": "#a78b7d",
+                    "tertiary": "#bec6e0",
+                    "secondary-fixed-dim": "#c0c1ff",
+                    "on-primary-fixed-variant": "#783200",
+                    "on-secondary": "#1000a9",
+                    "surface-container": "#152031",
+                    "on-primary-fixed": "#341100",
+                    "secondary-fixed": "#e1e0ff",
+                    "on-error-container": "#ffdad6",
+                    "tertiary-fixed-dim": "#bec6e0",
+                    "surface-container-lowest": "#040e1f",
+                    "on-secondary-fixed": "#07006c",
+                    "primary-fixed": "#ffdbca",
+                    "on-background": "#d8e3fb",
+                    "on-primary-container": "#582200",
+                    "on-tertiary-container": "#2a3246",
+                    "surface-container-highest": "#2a3548",
+                    "surface-container-low": "#111c2d",
+                    "on-error": "#690005",
+                    "background": "#081425",
+                    "on-secondary-container": "#ffffff",
+                    "surface-tint": "#ffb690",
+                    "secondary-container": "#f97316",
+                    "on-tertiary": "#283044",
+                    "inverse-primary": "#9d4300",
+                    "surface-bright": "#2f3a4c",
+                    "on-surface-variant": "#e0c0b1",
+                    "error": "#ffb4ab"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "24px",
+                    "xl": "80px",
+                    "base": "8px",
+                    "md": "24px",
+                    "lg": "48px",
+                    "xs": "4px",
+                    "container-max": "1280px",
+                    "margin-mobile": "16px",
+                    "sm": "12px",
+                    "margin-desktop": "64px",
+                    "margin-tablet": "32px"
+            },
+            "fontFamily": {
+                    "display-lg": ["Noto Serif"],
+                    "headline-xl": ["Noto Serif"],
+                    "headline-lg": ["Noto Serif"],
+                    "body-md": ["Plus Jakarta Sans"],
+                    "headline-md": ["Noto Serif"],
+                    "headline-lg-mobile": ["Noto Serif"],
+                    "body-lg": ["Plus Jakarta Sans"],
+                    "label-md": ["Plus Jakarta Sans"],
+                    "label-sm": ["Plus Jakarta Sans"],
+                    "title-lg": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "display-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-xl": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                    "title-lg": ["20px", {"lineHeight": "1.5", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #081425;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .itinerary-grid {
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            height: calc(100vh - 64px);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #2a3548;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-md border-b border-surface-container-highest">
+<div class="flex justify-between items-center px-margin-desktop h-16 w-full max-w-container-max mx-auto">
+<div class="flex items-center gap-8">
+<span class="font-display-lg text-headline-md text-primary">Traveloop</span>
+<nav class="hidden md:flex gap-6 items-center">
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Explore</a>
+<a class="font-label-md text-label-md text-primary border-b-2 border-primary pb-1" href="#">Trips</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Community</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Resources</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="bg-primary-container text-on-primary-container px-4 py-2 rounded-lg font-label-md text-label-md active:scale-95 transition-transform hover:opacity-90">Create Trip</button>
+<img alt="User profile" class="w-8 h-8 rounded-full border border-surface-container-highest" src="https://lh3.googleusercontent.com/aida-public/AB6AXuABOq24oWP1dXiBGK31mT06sjK4Sd9-tyvO7NbDVrzrm--d9bKP_YDLQI6QHU9eQ7QacZdE7tffOJ-PsfcWIxgiI67yi1I4ZjM1XZt-zCUmmh_jxiBJnW0Pso-sejs29D6PN5spm7maowgO5w4qMhN24eO9pi0DBa-dVJCk2QZB-qxApgHj8q9eWaMzM5430dI1pabuxdNuywar-gcC8Wxm65aD-Ks7iaUhHVe5k1QuOkIVkcJiUVlqn9RXpP6GdcBOkSdxago09FyW"/>
+</div>
+</div>
+</header>
+<main class="pt-16">
+<div class="itinerary-grid">
+<!-- SideNavBar (Stops Sidebar) -->
+<aside class="bg-surface-container-lowest border-r border-surface-container-highest flex flex-col h-full overflow-hidden">
+<div class="p-6 border-b border-surface-container-highest">
+<h2 class="font-title-lg text-title-lg text-primary mb-1">French Riviera Tour</h2>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Jun 12 — Jun 24, 2024</p>
+</div>
+<div class="flex-1 overflow-y-auto p-4 custom-scrollbar">
+<div class="flex justify-between items-center mb-4 px-2">
+<span class="font-label-md text-label-md text-on-surface-variant">Your Stops</span>
+<button class="text-primary hover:underline font-label-sm text-label-sm">Reorder</button>
+</div>
+<div class="space-y-3">
+<!-- Stop Item -->
+<div class="bg-surface-container-low p-4 rounded-xl border border-surface-container-highest group cursor-grab active:cursor-grabbing hover:bg-surface-container">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-outline group-hover:text-primary">drag_indicator</span>
+<div>
+<h4 class="font-label-md text-label-md text-on-surface">Paris, France</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant">4 nights • Jun 12 - 16</p>
+</div>
+</div>
+</div>
+<!-- Stop Item (Active) -->
+<div class="bg-surface-container p-4 rounded-xl border-2 border-primary/40 group cursor-grab active:cursor-grabbing relative overflow-hidden">
+<div class="absolute left-0 top-0 w-1 h-full bg-primary"></div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">drag_indicator</span>
+<div>
+<h4 class="font-label-md text-label-md text-on-surface font-bold">Lyon, France</h4>
+<p class="font-label-sm text-label-sm text-primary/80">3 nights • Jun 16 - 19</p>
+</div>
+</div>
+</div>
+<!-- Stop Item -->
+<div class="bg-surface-container-low p-4 rounded-xl border border-surface-container-highest group cursor-grab active:cursor-grabbing hover:bg-surface-container">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-outline group-hover:text-primary">drag_indicator</span>
+<div>
+<h4 class="font-label-md text-label-md text-on-surface">Nice, France</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant">5 nights • Jun 19 - 24</p>
+</div>
+</div>
+</div>
+</div>
+<button class="w-full mt-6 flex items-center justify-center gap-2 py-3 border-2 border-dashed border-surface-container-highest rounded-xl text-on-surface-variant hover:border-primary hover:text-primary transition-all">
+<span class="material-symbols-outlined">add_location</span>
+<span class="font-label-md text-label-md">Add Stop</span>
+</button>
+</div>
+<div class="p-6 bg-surface-container-lowest border-t border-surface-container-highest">
+<div class="flex items-center gap-4 text-on-surface-variant">
+<span class="material-symbols-outlined hover:text-primary cursor-pointer">settings</span>
+<span class="material-symbols-outlined hover:text-primary cursor-pointer">help</span>
+<span class="ml-auto font-label-sm text-label-sm opacity-60">Explorer Edition</span>
+</div>
+</div>
+</aside>
+<!-- Main Day-by-Day View -->
+<section class="relative bg-surface overflow-y-auto custom-scrollbar">
+<div class="max-w-4xl mx-auto px-margin-tablet py-12">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-6">
+<div>
+<h1 class="font-display-lg text-headline-xl text-on-surface mb-2">Day-by-Day Journey</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Planning for <span class="font-bold text-primary">Lyon</span> (Jun 16 — Jun 19)</p>
+</div>
+<div class="flex gap-3">
+<button class="bg-surface-container-highest text-on-surface px-4 py-2 rounded-lg font-label-md text-label-md flex items-center gap-2 hover:bg-surface-bright transition-colors">
+<span class="material-symbols-outlined text-[20px]">filter_list</span>
+                            Filter
+                        </button>
+<button class="bg-primary-container text-on-primary-container px-6 py-2 rounded-lg font-label-md text-label-md flex items-center gap-2 hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined text-[20px]">add</span>
+                            Add Activity
+                        </button>
+</div>
+</div>
+<!-- Timeline Section -->
+<div class="space-y-16">
+<!-- Day 1 -->
+<div class="relative pl-12">
+<div class="absolute left-[19px] top-0 bottom-[-64px] w-0.5 border-l-2 border-dashed border-surface-container-highest"></div>
+<div class="absolute left-0 top-0 w-10 h-10 bg-primary-container rounded-full flex items-center justify-center text-on-primary-container font-bold z-10 shadow-lg ring-4 ring-surface">1</div>
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-title-lg text-title-lg text-on-surface">Sunday, June 16</h3>
+<span class="bg-surface-container-high px-3 py-1 rounded-full font-label-sm text-label-sm text-on-surface-variant">Arrival &amp; Old Town</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Activity Card -->
+<div class="bg-surface-container-low rounded-xl overflow-hidden border border-surface-container-highest shadow-sm hover:shadow-lg transition-all group">
+<div class="h-40 relative">
+<img class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" data-alt="A cinematic shot of Vieux Lyon at sunset, featuring the historic terracotta-colored buildings and narrow cobblestone streets." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCitKTV3gh6lYP4K8gp2Sb8mChJn5ZY3WqpQZgKpoV0aTu6-RFNkIDZG5Vs2PBI0SsK_IknPg1v02qkjrdhfqln-m-VZPCaMM0HUEyJhgtE8jwn8bV9_3uEXGmQ0FLybFCNTbVc3pAfwocrwA0evqI5wocYyqTGwL9ALhYMYOb3cwhFK9KACpU8YhBRvg1OEyui14MCtg1F7DzgqbJHNnAflySt-vXKj8_1Dd7_lLRz0XDiDldl2Sg36AlmAdvYXhj2q9Yye3Hlil7a"/>
+<div class="absolute top-3 right-3 bg-surface-container-lowest/90 backdrop-blur-md px-2 py-1 rounded text-primary font-label-sm text-label-sm">14:00</div>
+</div>
+<div class="p-4">
+<h4 class="font-label-md text-label-md text-on-surface mb-1">Check-in at Cour des Loges</h4>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm mb-4">Historical boutique hotel in the heart of Old Lyon.</p>
+<div class="flex gap-2">
+<span class="bg-primary-container/20 text-primary px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider">Lodging</span>
+<span class="bg-surface-container-highest text-on-surface-variant px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider">Premium</span>
+</div>
+</div>
+</div>
+<!-- Activity Card -->
+<div class="bg-surface-container-low rounded-xl overflow-hidden border border-surface-container-highest shadow-sm hover:shadow-lg transition-all group">
+<div class="h-40 relative">
+<img class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" data-alt="A brightly lit, modern French bistro interior in Lyon" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDCzA5OUwv2USHM7ZiwuTriQc1EzoepGz8ccJ3MxzMCOn2ogyeJSUEZko79p7YJdqUvvNsP_pSofLMty6GtAwXjEnLG103fGch8QnY2woF06_cuIqXGO-Q7RKM6IRisM3SGrEJxCWVWl-WhV6hoABgDpybjIxfOhZ6LIDoNpZ904RS_46u8bZrXkWdMU-tI0BvM9Z9ETuqiqghxgZVKiI4akLDWQi8Y2NhCSYlWgZ5Mv0OaNcZyA5uFGMoLpu_yYt4BSOMEzJulyZa1"/>
+<div class="absolute top-3 right-3 bg-surface-container-lowest/90 backdrop-blur-md px-2 py-1 rounded text-primary font-label-sm text-label-sm">19:30</div>
+</div>
+<div class="p-4">
+<h4 class="font-label-md text-label-md text-on-surface mb-1">Dinner at Bouchon Les Lyonnais</h4>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm mb-4">Traditional Lyonnaise gastronomy in an authentic setting.</p>
+<div class="flex gap-2">
+<span class="bg-primary-container/20 text-primary px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider">Dining</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Day 2 -->
+<div class="relative pl-12">
+<div class="absolute left-[19px] top-0 bottom-[-64px] w-0.5 border-l-2 border-dashed border-surface-container-highest"></div>
+<div class="absolute left-0 top-0 w-10 h-10 bg-surface border-2 border-primary-container rounded-full flex items-center justify-center text-primary font-bold z-10 shadow-lg ring-4 ring-surface">2</div>
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-title-lg text-title-lg text-on-surface">Monday, June 17</h3>
+<span class="bg-surface-container-high px-3 py-1 rounded-full font-label-sm text-label-sm text-on-surface-variant">Art &amp; Rivers</span>
+</div>
+<div class="bg-surface-container-low rounded-xl p-8 border-2 border-dashed border-surface-container-highest flex flex-col items-center justify-center text-center">
+<div class="w-16 h-16 rounded-full bg-surface-container-highest flex items-center justify-center mb-4 text-on-surface-variant">
+<span class="material-symbols-outlined text-4xl">event_available</span>
+</div>
+<h4 class="font-label-md text-label-md text-on-surface mb-2">Morning is currently free</h4>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6 max-w-xs">Start your day with a walk along the Rhône or add a museum visit.</p>
+<button class="text-primary font-label-md text-label-md flex items-center gap-1 hover:underline">
+<span class="material-symbols-outlined text-sm">add</span>
+                                Browse local experiences
+                            </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Floating Map Preview Toggle -->
+<div class="fixed bottom-10 right-10 z-40 group">
+<button class="bg-primary-container text-on-primary-container w-16 h-16 rounded-full shadow-2xl flex items-center justify-center group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl">map</span>
+</button>
+<!-- Small Preview -->
+<div class="absolute bottom-20 right-0 w-80 h-48 bg-surface-container-highest rounded-2xl shadow-2xl overflow-hidden border-4 border-surface-container-highest transform transition-all translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto">
+<img class="w-full h-full object-cover brightness-75" data-alt="A stylized, minimalist digital map of Lyon, France" data-location="Lyon" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAUD3LHh5LXOTAu-SN5ycAoGHwztY2akcxnTjNvB4IOqUCf8pjVenVGxA6iB8y-pN4RM_kiDtlRFt1dYjZfHM7cJFL2bbAEdws2nc-dQ491IR5pEhCZltHkF6NFb8O7MBdnkJ1iL38Mv1WIhSj_KFHY4tO54V95uCQfZMsZPe12BDxrMiySW5knCY2K0HKu1csvkkuBrj5vYzI6e1tZwMQhqipV3uiBTUZSbnRJ54q7OGcpYC0As1Rpf8WZFMQJ7e3oBUbFGpbGv4br"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface/80 to-transparent"></div>
+<div class="absolute bottom-3 left-4 text-on-surface font-label-sm text-label-sm">Live Route View</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-safe h-16 bg-surface-container-lowest/90 backdrop-blur-lg border-t border-surface-container-highest rounded-t-xl">
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors px-4 py-1">
+<span class="material-symbols-outlined">explore</span>
+<span class="font-label-sm text-label-sm">Explore</span>
+</div>
+<div class="flex flex-col items-center justify-center text-primary rounded-full px-4 py-1">
+<span class="material-symbols-outlined font-bold">travel_explore</span>
+<span class="font-label-sm text-label-sm font-bold">Trips</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors px-4 py-1">
+<span class="material-symbols-outlined">share</span>
+<span class="font-label-sm text-label-sm">Social</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors px-4 py-1">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</div>
+</nav>
+</body></html>

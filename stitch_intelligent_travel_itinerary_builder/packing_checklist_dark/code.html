@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Traveloop - Packing Checklist</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&amp;family=Noto+Serif:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-container": "#929ab2",
+                        "secondary": "#c0c1ff",
+                        "inverse-surface": "#d8e3fb",
+                        "surface-variant": "#2a3548",
+                        "on-tertiary-fixed": "#131b2e",
+                        "primary-fixed-dim": "#ffb690",
+                        "on-tertiary-fixed-variant": "#3f465c",
+                        "primary": "#ffb690",
+                        "surface-dim": "#081425",
+                        "on-surface": "#d8e3fb",
+                        "inverse-on-surface": "#263143",
+                        "on-secondary-fixed-variant": "#2f2ebe",
+                        "outline-variant": "#584237",
+                        "tertiary-fixed": "#dae2fd",
+                        "error-container": "#93000a",
+                        "surface": "#081425",
+                        "surface-container-high": "#1f2a3c",
+                        "on-primary": "#552100",
+                        "primary-container": "#f97316",
+                        "outline": "#a78b7d",
+                        "tertiary": "#bec6e0",
+                        "secondary-fixed-dim": "#c0c1ff",
+                        "on-primary-fixed-variant": "#783200",
+                        "on-secondary": "#1000a9",
+                        "surface-container": "#152031",
+                        "on-primary-fixed": "#341100",
+                        "secondary-fixed": "#e1e0ff",
+                        "on-error-container": "#ffdad6",
+                        "tertiary-fixed-dim": "#bec6e0",
+                        "surface-container-lowest": "#040e1f",
+                        "on-secondary-fixed": "#07006c",
+                        "primary-fixed": "#ffdbca",
+                        "on-background": "#d8e3fb",
+                        "on-primary-container": "#582200",
+                        "on-tertiary-container": "#2a3246",
+                        "surface-container-highest": "#2a3548",
+                        "surface-container-low": "#111c2d",
+                        "on-error": "#690005",
+                        "background": "#081425",
+                        "on-secondary-container": "#b0b2ff",
+                        "surface-tint": "#ffb690",
+                        "secondary-container": "#3131c0",
+                        "on-tertiary": "#283044",
+                        "inverse-primary": "#9d4300",
+                        "surface-bright": "#2f3a4c",
+                        "on-surface-variant": "#e0c0b1",
+                        "error": "#ffb4ab"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "xl": "80px",
+                        "base": "8px",
+                        "md": "24px",
+                        "lg": "48px",
+                        "xs": "4px",
+                        "container-max": "1280px",
+                        "margin-mobile": "16px",
+                        "sm": "12px",
+                        "margin-desktop": "64px"
+                    },
+                    "fontFamily": {
+                        "headline-xl": ["Noto Serif"],
+                        "headline-lg": ["Noto Serif"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "headline-md": ["Noto Serif"],
+                        "headline-lg-mobile": ["Noto Serif"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "label-md": ["Plus Jakarta Sans"],
+                        "label-sm": ["Plus Jakarta Sans"],
+                        "display-lg": ["Noto Serif"]
+                    },
+                    "fontSize": {
+                        "headline-xl": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                        "display-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .progress-ring-circle {
+            transition: stroke-dashoffset 0.35s;
+            transform: rotate(-90deg);
+            transform-origin: 50% 50%;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface min-h-screen font-body-md">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-md shadow-sm border-b border-white/5">
+<div class="flex justify-between items-center px-4 md:px-margin-desktop h-16 w-full max-w-container-max mx-auto">
+<div class="flex items-center gap-8">
+<span class="font-display-lg text-headline-md text-primary">Traveloop</span>
+<nav class="hidden md:flex gap-6">
+<a class="font-label-md text-label-md text-on-surface/70 hover:text-primary transition-colors duration-200" href="#">Explore</a>
+<a class="font-label-md text-label-md text-primary border-b-2 border-primary pb-1" href="#">Trips</a>
+<a class="font-label-md text-label-md text-on-surface/70 hover:text-primary transition-colors duration-200" href="#">Community</a>
+<a class="font-label-md text-label-md text-on-surface/70 hover:text-primary transition-colors duration-200" href="#">Resources</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="hidden md:block bg-primary-container text-on-primary-container px-6 py-2 rounded-full font-label-md transition-transform active:scale-95">Create Trip</button>
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-outline-variant/30">
+<img alt="User profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA6CKVFqwCvVfLWqIgqcOX70kT_ffDWtz7Gq8WHRaFj728CBJ2Pg4uRHDv9XT5imS3GjOc6oE5wJA3JDS06wyj0Y0B4xKLBZtU3bTfdOWagb45J6gaUTVPBHrIwmzVEIXFR91MD4NVwMxRYcrNNDyX9YCfbqZeAcnKKVW9F5Z1aJALhqYKPnIIXiGW-X08yJ5CiOZhf9LqMhT0SadOZhhccM24ZwM32S9jqgscqwUDH1shKOkC67wuHezUGPfcDhgGzJg4881HkmAv2"/>
+</div>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-20 px-4 md:px-margin-desktop max-w-container-max mx-auto">
+<!-- Hero Section & Progress -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-12 gap-8">
+<div class="space-y-2">
+<h1 class="font-display-lg text-display-lg text-primary">Swiss Alps Expedition</h1>
+<p class="font-body-lg text-body-lg text-on-surface/60">Your checklist for the 12-day mountain journey</p>
+</div>
+<div class="flex items-center gap-6 bg-surface-container p-6 rounded-xl border border-white/5 shadow-xl">
+<div class="relative w-20 h-20">
+<svg class="w-full h-full">
+<circle class="text-surface-variant" cx="40" cy="40" fill="transparent" r="34" stroke="currentColor" stroke-width="6"></circle>
+<circle class="text-primary-container progress-ring-circle" cx="40" cy="40" fill="transparent" r="34" stroke="currentColor" stroke-dasharray="213.6" stroke-dashoffset="64" stroke-linecap="round" stroke-width="6"></circle>
+</svg>
+<div class="absolute inset-0 flex items-center justify-center">
+<span class="font-label-sm text-label-sm text-on-surface">70%</span>
+</div>
+</div>
+<div class="space-y-1">
+<p class="font-label-md text-label-md text-on-surface">14 of 20 Packed</p>
+<button class="text-primary font-label-sm text-label-sm hover:underline flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">restart_alt</span>
+                        Reset List
+                    </button>
+</div>
+</div>
+</div>
+<!-- Checklist Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<!-- Category: Documents -->
+<section class="bg-surface-container-high p-6 rounded-xl border border-white/5 shadow-lg h-full flex flex-col">
+<div class="flex items-center gap-3 mb-6">
+<div class="w-10 h-10 rounded-lg bg-surface-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">description</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-on-surface">Documents</h2>
+</div>
+<ul class="space-y-4 flex-grow">
+<li class="flex items-center gap-3 group">
+<div class="w-6 h-6 border-2 border-primary-container rounded bg-primary-container flex items-center justify-center cursor-pointer">
+<span class="material-symbols-outlined text-on-primary-container text-sm" style="font-variation-settings: 'wght' 700;">check</span>
+</div>
+<span class="font-body-md text-body-md text-on-surface/40 line-through">Passport &amp; Visas</span>
+</li>
+<li class="flex items-center gap-3 group">
+<div class="w-6 h-6 border-2 border-primary-container rounded bg-primary-container flex items-center justify-center cursor-pointer">
+<span class="material-symbols-outlined text-on-primary-container text-sm" style="font-variation-settings: 'wght' 700;">check</span>
+</div>
+<span class="font-body-md text-body-md text-on-surface/40 line-through">Travel Insurance</span>
+</li>
+<li class="flex items-center gap-3 group">
+<div class="w-6 h-6 border-2 border-white/20 rounded hover:border-primary-container transition-colors cursor-pointer"></div>
+<span class="font-body-md text-body-md text-white">Hotel Bookings</span>
+</li>
+</ul>
+</section>
+<!-- Category: Clothing -->
+<section class="bg-surface-container-high p-6 rounded-xl border border-white/5 shadow-lg h-full flex flex-col">
+<div class="flex items-center gap-3 mb-6">
+<div class="w-10 h-10 rounded-lg bg-surface-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">apparel</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-on-surface">Clothing</h2>
+</div>
+<ul class="space-y-4 flex-grow">
+<li class="flex items-center gap-3">
+<div class="w-6 h-6 border-2 border-white/20 rounded cursor-pointer"></div>
+<span class="font-body-md text-body-md text-white">Rain Jacket</span>
+</li>
+<li class="flex items-center gap-3">
+<div class="w-6 h-6 border-2 border-primary-container rounded bg-primary-container flex items-center justify-center cursor-pointer">
+<span class="material-symbols-outlined text-on-primary-container text-sm" style="font-variation-settings: 'wght' 700;">check</span>
+</div>
+<span class="font-body-md text-body-md text-on-surface/40 line-through">Hiking Boots</span>
+</li>
+<li class="flex items-center gap-3">
+<div class="w-6 h-6 border-2 border-white/20 rounded cursor-pointer"></div>
+<span class="font-body-md text-body-md text-white">Thermal Base Layers</span>
+</li>
+<li class="flex items-center gap-3">
+<div class="w-6 h-6 border-2 border-white/20 rounded cursor-pointer"></div>
+<span class="font-body-md text-body-md text-white">Sunglasses</span>
+</li>
+</ul>
+</section>
+<!-- Category: Electronics -->
+<section class="bg-surface-container-high p-6 rounded-xl border border-white/5 shadow-lg h-full flex flex-col">
+<div class="flex items-center gap-3 mb-6">
+<div class="w-10 h-10 rounded-lg bg-surface-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">devices</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-on-surface">Electronics</h2>
+</div>
+<ul class="space-y-4 flex-grow">
+<li class="flex items-center gap-3">
+<div class="w-6 h-6 border-2 border-primary-container rounded bg-primary-container flex items-center justify-center cursor-pointer">
+<span class="material-symbols-outlined text-on-primary-container text-sm" style="font-variation-settings: 'wght' 700;">check</span>
+</div>
+<span class="font-body-md text-body-md text-on-surface/40 line-through">Mirrorless Camera</span>
+</li>
+<li class="flex items-center gap-3">
+<div class="w-6 h-6 border-2 border-white/20 rounded cursor-pointer"></div>
+<span class="font-body-md text-body-md text-white">Universal Power Adapter</span>
+</li>
+<li class="flex items-center gap-3">
+<div class="w-6 h-6 border-2 border-primary-container rounded bg-primary-container flex items-center justify-center cursor-pointer">
+<span class="material-symbols-outlined text-on-primary-container text-sm" style="font-variation-settings: 'wght' 700;">check</span>
+</div>
+<span class="font-body-md text-body-md text-on-surface/40 line-through">Power Bank (20k mAh)</span>
+</li>
+</ul>
+</section>
+<!-- Category: Toiletries -->
+<section class="bg-surface-container-high p-6 rounded-xl border border-white/5 shadow-lg lg:col-span-2">
+<div class="flex items-center gap-3 mb-6">
+<div class="w-10 h-10 rounded-lg bg-surface-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">medication</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-on-surface">Toiletries &amp; Health</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
+<div class="flex items-center gap-3">
+<div class="w-6 h-6 border-2 border-primary-container rounded bg-primary-container flex items-center justify-center cursor-pointer">
+<span class="material-symbols-outlined text-on-primary-container text-sm" style="font-variation-settings: 'wght' 700;">check</span>
+</div>
+<span class="font-body-md text-body-md text-on-surface/40 line-through">Sunscreen (SPF 50)</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-6 h-6 border-2 border-white/20 rounded cursor-pointer"></div>
+<span class="font-body-md text-body-md text-white">First Aid Kit</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-6 h-6 border-2 border-white/20 rounded cursor-pointer"></div>
+<span class="font-body-md text-body-md text-white">Toothbrush &amp; Paste</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-6 h-6 border-2 border-primary-container rounded bg-primary-container flex items-center justify-center cursor-pointer">
+<span class="material-symbols-outlined text-on-primary-container text-sm" style="font-variation-settings: 'wght' 700;">check</span>
+</div>
+<span class="font-body-md text-body-md text-on-surface/40 line-through">Quick-dry Towel</span>
+</div>
+</div>
+</section>
+<!-- Add Item Utility -->
+<section class="bg-surface-container-highest p-6 rounded-xl flex flex-col justify-center gap-4 border border-white/10 shadow-lg">
+<h3 class="font-headline-md text-headline-md text-on-surface">Missing something?</h3>
+<div class="relative">
+<input class="w-full bg-white/5 border border-white/20 rounded-lg px-4 py-3 text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-primary-container transition-all" placeholder="Add custom item..." type="text"/>
+<button class="absolute right-2 top-2 p-1.5 bg-primary-container text-white rounded-md">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+<div class="flex flex-wrap gap-2 mt-2">
+<span class="bg-white/5 border border-white/10 text-white/50 px-3 py-1 rounded-full text-label-sm font-label-sm hover:text-white cursor-pointer">+ Swiss Knife</span>
+<span class="bg-white/5 border border-white/10 text-white/50 px-3 py-1 rounded-full text-label-sm font-label-sm hover:text-white cursor-pointer">+ Compass</span>
+</div>
+</section>
+</div>
+<!-- Imagery Break -->
+<div class="mt-16 rounded-3xl overflow-hidden h-64 relative border border-white/5">
+<img alt="Scenic mountain landscape" class="w-full h-full object-cover opacity-60" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAiStWooRcYBJci0LavfoK4KRoemx3YfXim_keIG5ryAZs5_LJ7oLpvhVt5MsX3s_jPTGN-QW_OFV0H1tAHcjCncU1jDmrRa3PtmgYh8vx1H6lcRkmrkP8G4Q65BNik5TA8q83Qlj_Tdk9tOejbpcmt2pbew2J-l7QX6Sfih8g-l5J_yyLEoRvw1V0-za34ty0hC04ymPFfV7NlJW5gDPUV3uE4dUykYkZ_8pI1IdaH1CltjmHje-o69WITJlgsiQRDwUofO9td85iI"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface to-transparent flex items-end p-8">
+<p class="text-white font-headline-md text-headline-md">Adventure is calling. Be prepared.</p>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest border-t border-white/5 w-full py-12">
+<div class="flex flex-col md:flex-row justify-between items-center px-4 md:px-margin-desktop gap-8 max-w-container-max mx-auto">
+<div class="space-y-4 text-center md:text-left">
+<span class="font-display-lg text-headline-md text-primary">Traveloop</span>
+<p class="font-body-md text-body-md text-on-surface/40">© 2024 Traveloop Technologies. Journey Responsibly.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-6">
+<a class="font-body-md text-body-md text-on-surface/60 hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="font-body-md text-body-md text-on-surface/60 hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="font-body-md text-body-md text-on-surface/60 hover:text-primary transition-colors" href="#">Cookie Settings</a>
+<a class="font-body-md text-body-md text-on-surface/60 hover:text-primary transition-colors" href="#">Global Destinations</a>
+</div>
+</div>
+</footer>
+<!-- BottomNavBar (Mobile Only) -->
+<div class="md:hidden fixed bottom-0 left-0 w-full z-50 bg-surface/90 backdrop-blur-lg flex justify-around items-center px-4 pb-safe h-16 shadow-2xl border-t border-white/5">
+<div class="flex flex-col items-center justify-center text-on-surface/60">
+<span class="material-symbols-outlined">explore</span>
+<span class="font-label-sm text-label-sm">Explore</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1">
+<span class="material-symbols-outlined">travel_explore</span>
+<span class="font-label-sm text-label-sm">Trips</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface/60">
+<span class="material-symbols-outlined">share</span>
+<span class="font-label-sm text-label-sm">Social</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface/60">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</div>
+</div>
+</body></html>

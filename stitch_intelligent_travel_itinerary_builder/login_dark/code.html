@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;family=Noto+Serif:wght@400;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            backdrop-filter: blur(12px);
+            background: rgba(8, 20, 37, 0.4);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-container": "#929ab2",
+                        "secondary": "#c0c1ff",
+                        "inverse-surface": "#d8e3fb",
+                        "surface-variant": "#2a3548",
+                        "on-tertiary-fixed": "#131b2e",
+                        "primary-fixed-dim": "#ffb690",
+                        "on-tertiary-fixed-variant": "#3f465c",
+                        "primary": "#ffb690",
+                        "surface-dim": "#081425",
+                        "on-surface": "#d8e3fb",
+                        "inverse-on-surface": "#263143",
+                        "on-secondary-fixed-variant": "#2f2ebe",
+                        "outline-variant": "#584237",
+                        "tertiary-fixed": "#dae2fd",
+                        "error-container": "#93000a",
+                        "surface": "#081425",
+                        "surface-container-high": "#1f2a3c",
+                        "on-primary": "#552100",
+                        "primary-container": "#f97316",
+                        "outline": "#a78b7d",
+                        "tertiary": "#bec6e0",
+                        "secondary-fixed-dim": "#c0c1ff",
+                        "on-primary-fixed-variant": "#783200",
+                        "on-secondary": "#1000a9",
+                        "surface-container": "#152031",
+                        "on-primary-fixed": "#341100",
+                        "secondary-fixed": "#e1e0ff",
+                        "on-error-container": "#ffdad6",
+                        "tertiary-fixed-dim": "#bec6e0",
+                        "surface-container-lowest": "#040e1f",
+                        "on-secondary-fixed": "#07006c",
+                        "primary-fixed": "#ffdbca",
+                        "on-background": "#d8e3fb",
+                        "on-primary-container": "#582200",
+                        "on-tertiary-container": "#2a3246",
+                        "surface-container-highest": "#2a3548",
+                        "surface-container-low": "#111c2d",
+                        "on-error": "#690005",
+                        "background": "#081425",
+                        "on-secondary-container": "#b0b2ff",
+                        "surface-tint": "#ffb690",
+                        "secondary-container": "#3131c0",
+                        "on-tertiary": "#283044",
+                        "inverse-primary": "#9d4300",
+                        "surface-bright": "#2f3a4c",
+                        "on-surface-variant": "#e0c0b1",
+                        "error": "#ffb4ab"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "xl": "80px",
+                        "base": "8px",
+                        "md": "24px",
+                        "lg": "48px",
+                        "xs": "4px",
+                        "container-max": "1280px",
+                        "margin-mobile": "16px",
+                        "sm": "12px"
+                    },
+                    "fontFamily": {
+                        "headline-xl": ["Noto Serif"],
+                        "headline-lg": ["Noto Serif"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "headline-md": ["Noto Serif"],
+                        "headline-lg-mobile": ["Noto Serif"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "label-md": ["Plus Jakarta Sans"],
+                        "label-sm": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "headline-xl": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background font-body-md text-on-background dark">
+<main class="min-h-screen flex flex-col md:flex-row">
+<!-- Left: Image Section -->
+<section class="hidden md:flex md:w-1/2 relative overflow-hidden">
+<div class="absolute inset-0">
+<img alt="Inspiring Travel" class="w-full h-full object-cover" data-alt="A breathtaking landscape of a lush valley at sunrise with mist rolling over the hills. The lighting is ethereal and soft, reflecting a premium light-mode aesthetic with pastel tones and crisp clarity. The style is professional travel photography, emphasizing vastness, serenity, and the systematic beauty of nature. The color palette features natural greens, soft whites, and early morning golden hues that evoke a sense of calm and discovery." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrl_G5IOxapv0SFPOSZIQ2GmM6TwU7pEos7vE9SH0BJWgcSyllRDwfNruoX4aTwHHh8b8uefsYz5Za15cAxCoxSp4Rd5eSlnOKsmt4n85T4YBIslwNgQL1WvNV2qhijJtXyEntEQIg1BldrCabFdtxxUrDw1z1zoQjhOEH8GqDUVoKeF0zNwI_NMMcTpi_DQFIp6-C2_l-ADWO13CqKvw8YUKhbbc-vVpSqAMCOuw3BRbc1J7e80QNGXN7nM4VpfyCEk7W2AvGIkaD"/>
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent"></div>
+<div class="relative z-10 p-xl flex flex-col justify-end text-white max-w-lg">
+<h2 class="font-headline-lg text-headline-lg mb-md text-white">Explore the world with purpose.</h2>
+<p class="font-body-lg text-body-lg text-white opacity-90">
+                Join thousands of travelers planning collaborative, seamless trips with Traveloop’s premium concierge tools.
+            </p>
+<div class="mt-xl flex items-center gap-sm">
+<div class="flex -space-x-2">
+<img alt="Avatar" class="w-10 h-10 rounded-full border-2 border-surface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOSgVku-dK4foT41iH7g_-yqOqHUDGEYwLWki03s6d3CzQbSmrqNYZow3rokuExl7F-bmXgcP_V6BUEP1BplZYqgTOMANF1_zoPSABXF4_pOUGhsb_hzMxAfMnOzdyw2Y4PXAUAFCiw4FDlKhMCWTy9zQIB0T9iXHvRiRpC_a_Af13prj-AdoGqleqi5Fyl8OBbPQdKirpFjc1eE8pXbsWbVCL_H-vCqi_O-nHHAtZ5MfMUdKwbcDBs9Fl3T7oBvQ18s6JtbM6UOuT"/>
+<img alt="Avatar" class="w-10 h-10 rounded-full border-2 border-surface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFf38c10F_yXUfzcEytCIPIie0CTnf_OOuGnwNnZl74vBb3chZB2Xy_7uM20XEsFRG4wG6HEAQ8e7mIQD6tVx7ps6wfw8aBLyg9BsUKXlWJZdwXJ_Ek89ESpYSuDQAGDuYRXcAJEFlOVWRzt4RC5S40hvWGMMiWHWcEi2m3Vpz8LGOLql1JRZVUulZn0PQbr6mHohhZtumUZJOZmq9U0VVmW74TP9LUpd8K2MPvPd1t8AN-5JW8NGJU3Uj_O-TYbgWz7l2jBHU_zan"/>
+<img alt="Avatar" class="w-10 h-10 rounded-full border-2 border-surface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBuJyDpT97FKBfjTL78aLTyWeJ3oTHxAOVU13dYg6vRIjDI_YgeAo0lKyrd3c9-_CFCiIqjh7s5k7yFCgseE3nqfxFBsJ5zXziCpTsn1yvNSPgQWX_vB7CLznTFur08wpIcPw5iMe5Lk27UyosyBIxkLYzbXLGjrYJW77OsC0YoBF1FRywSnUNCr_qhVc4_eg_lVmqeD8Lyo_P2WNKo_b4-DoBLGrdt84xU6GBlpEVN94k_BRgu0P8elE5I3P6-ZCjMHql-jvi6UzVx"/>
+</div>
+<span class="font-label-md text-label-md text-white opacity-80">+ 1.2k shared itineraries today</span>
+</div>
+</div>
+<!-- Glassmorphism Branding Anchor -->
+<div class="absolute top-md left-md glass-panel p-sm rounded-lg flex items-center gap-base border border-white/10">
+<span class="material-symbols-outlined text-primary" data-icon="explore">explore</span>
+<span class="font-headline-md text-headline-md font-bold text-white">Traveloop</span>
+</div>
+</section>
+<!-- Right: Form Section -->
+<section class="flex-1 flex items-center justify-center p-md md:p-xl bg-surface-container-lowest">
+<div class="w-full max-w-md">
+<!-- Mobile Branding -->
+<div class="md:hidden flex items-center gap-base mb-xl">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="explore">explore</span>
+<span class="font-headline-lg text-headline-lg font-bold text-on-surface">Traveloop</span>
+</div>
+<div class="mb-xl">
+<h1 class="font-headline-lg text-headline-lg text-on-surface mb-xs">Welcome back</h1>
+<p class="font-body-md text-on-surface-variant">Log in to your account to continue your journey.</p>
+</div>
+<!-- Social Logins -->
+<div class="grid grid-cols-2 gap-md mb-xl">
+<button class="flex items-center justify-center gap-base py-sm px-md border border-surface-variant rounded-lg hover:bg-surface-container transition-colors font-label-md text-label-md text-on-surface">
+<svg class="w-5 h-5" viewbox="0 0 24 24">
+<path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"></path>
+<path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"></path>
+<path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"></path>
+<path d="M12 5.38c1.62 0 3.06.56 4.21 1.66l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"></path>
+</svg>
+                    Google
+                </button>
+<button class="flex items-center justify-center gap-base py-sm px-md border border-surface-variant rounded-lg hover:bg-surface-container transition-colors font-label-md text-label-md text-on-surface">
+<svg class="w-5 h-5" viewbox="0 0 24 24">
+<path d="M17.05 20.28c-.96.95-2.21 1.72-3.71 1.72-1.5 0-2.43-.48-3.41-.48-.97 0-2.03.49-3.41.49-1.5 0-2.85-.86-3.83-1.84-2.01-2.02-2.01-5.29 0-7.31.98-.98 2.33-1.54 3.83-1.54 1.38 0 2.44.5 3.41.5.98 0 1.91-.49 3.41-.49 1.25 0 2.34.42 3.16 1.15-.22.19-2.05 1.71-2.05 4.14 0 2.91 2.45 3.96 2.6 4.02-.02.09-.45 1.64-1.5 3.09M12.03 7.25c-.02-2.23 1.84-4.07 4.07-4.09.02 2.23-1.84 4.07-4.07 4.09z" fill="currentColor"></path>
+</svg>
+                    Apple
+                </button>
+</div>
+<div class="relative mb-xl">
+<div class="absolute inset-0 flex items-center">
+<div class="w-full border-t border-surface-variant"></div>
+</div>
+<div class="relative flex justify-center text-label-md text-on-surface-variant">
+<span class="bg-surface-container-lowest px-md font-label-md uppercase tracking-widest">or email</span>
+</div>
+</div>
+<!-- Form -->
+<form class="space-y-md">
+<div>
+<label class="block font-label-md text-label-md text-on-surface mb-xs" for="email">Email Address</label>
+<input class="w-full px-md py-sm rounded-lg border border-surface-variant focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all bg-surface-container-low text-on-surface placeholder:text-on-surface-variant/50" id="email" name="email" placeholder="e.g. wanderer@traveloop.com" type="email"/>
+<p class="mt-xs font-label-sm text-label-sm text-on-surface-variant">We'll never share your email.</p>
+</div>
+<div>
+<div class="flex justify-between items-center mb-xs">
+<label class="block font-label-md text-label-md text-on-surface" for="password">Password</label>
+<a class="font-label-sm text-label-sm text-secondary hover:underline" href="#">Forgot password?</a>
+</div>
+<input class="w-full px-md py-sm rounded-lg border border-surface-variant focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all bg-surface-container-low text-on-surface placeholder:text-on-surface-variant/50" id="password" name="password" placeholder="••••••••" type="password"/>
+</div>
+<div class="flex items-center">
+<input class="w-4 h-4 rounded border-surface-variant text-primary focus:ring-primary bg-surface-container-low" id="remember" type="checkbox"/>
+<label class="ml-base font-label-sm text-label-sm text-on-surface-variant select-none" for="remember">Remember me for 30 days</label>
+</div>
+<button class="w-full py-md bg-primary-container text-on-primary rounded-lg font-label-md text-label-md hover:brightness-110 active:scale-[0.98] transition-all shadow-md uppercase tracking-wider" type="submit">
+                    Sign In
+                </button>
+</form>
+<div class="mt-xl text-center">
+<p class="font-label-sm text-label-sm text-on-surface-variant">
+                    Don't have an account? 
+                    <a class="text-secondary font-label-md text-label-md hover:underline ml-xs" href="#">Create an account</a>
+</p>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer for terms (minimal) -->
+<footer class="fixed bottom-md right-md hidden md:block">
+<p class="font-label-sm text-label-sm text-on-surface-variant opacity-60">
+        © 2024 Traveloop Inc. • <a class="hover:text-on-surface transition-colors" href="#">Privacy</a> • <a class="hover:text-on-surface transition-colors" href="#">Terms</a>
+</p>
+</footer>
+</body></html>

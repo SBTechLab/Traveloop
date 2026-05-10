@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Traveloop - Login</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@600;700&amp;family=Plus+Jakarta+Sans:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface": "#f7f9fb",
+                    "surface-container-low": "#f2f4f6",
+                    "primary-fixed": "#dae2fd",
+                    "on-error": "#ffffff",
+                    "surface-container": "#eceef0",
+                    "primary-container": "#131b2e",
+                    "on-tertiary-container": "#da586c",
+                    "outline": "#76777d",
+                    "on-tertiary": "#ffffff",
+                    "tertiary-fixed": "#ffdadc",
+                    "primary-fixed-dim": "#bec6e0",
+                    "secondary-container": "#fd761a",
+                    "tertiary": "#000000",
+                    "on-secondary-fixed": "#341100",
+                    "on-error-container": "#93000a",
+                    "on-primary-container": "#7c839b",
+                    "surface-variant": "#e0e3e5",
+                    "on-background": "#191c1e",
+                    "on-primary-fixed": "#131b2e",
+                    "on-surface-variant": "#45464d",
+                    "on-surface": "#191c1e",
+                    "secondary-fixed-dim": "#ffb690",
+                    "secondary-fixed": "#ffdbca",
+                    "error": "#ba1a1a",
+                    "primary": "#000000",
+                    "tertiary-container": "#400010",
+                    "inverse-primary": "#bec6e0",
+                    "outline-variant": "#c6c6cd",
+                    "surface-dim": "#d8dadc",
+                    "tertiary-fixed-dim": "#ffb2b9",
+                    "on-tertiary-fixed": "#400010",
+                    "on-tertiary-fixed-variant": "#891933",
+                    "surface-bright": "#f7f9fb",
+                    "on-secondary-fixed-variant": "#783200",
+                    "surface-container-high": "#e6e8ea",
+                    "error-container": "#ffdad6",
+                    "on-secondary": "#ffffff",
+                    "surface-container-highest": "#e0e3e5",
+                    "inverse-on-surface": "#eff1f3",
+                    "background": "#f7f9fb",
+                    "surface-tint": "#565e74",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary": "#9d4300",
+                    "on-primary-fixed-variant": "#3f465c",
+                    "on-secondary-container": "#5c2400",
+                    "inverse-surface": "#2d3133",
+                    "on-primary": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "base": "8px",
+                    "gutter": "24px",
+                    "margin-desktop": "64px",
+                    "margin-mobile": "20px",
+                    "container-max": "1280px",
+                    "margin-tablet": "32px"
+            },
+            "fontFamily": {
+                    "label-sm": ["Plus Jakarta Sans"],
+                    "label-md": ["Plus Jakarta Sans"],
+                    "body-lg": ["Plus Jakarta Sans"],
+                    "title-lg": ["Plus Jakarta Sans"],
+                    "display-lg-mobile": ["Noto Serif"],
+                    "body-md": ["Plus Jakarta Sans"],
+                    "headline-md-mobile": ["Noto Serif"],
+                    "headline-md": ["Noto Serif"],
+                    "display-lg": ["Noto Serif"]
+            },
+            "fontSize": {
+                    "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "title-lg": ["20px", {"lineHeight": "1.5", "fontWeight": "600"}],
+                    "display-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-md-mobile": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hero-gradient {
+            background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.6) 100%);
+        }
+        .form-shadow {
+            box-shadow: 0 4px 20px rgba(15, 23, 42, 0.06);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface selection:bg-secondary-fixed selection:text-on-secondary-fixed">
+<main class="min-h-screen flex flex-col md:flex-row overflow-hidden">
+<!-- Branding Overlay for Mobile -->
+<div class="md:hidden absolute top-8 left-8 z-20">
+<h1 class="font-display-lg text-title-lg text-white">Traveloop</h1>
+</div>
+<!-- Left Column: Visual Inspiration -->
+<section class="hidden md:flex md:w-1/2 lg:w-3/5 relative h-screen">
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover" data-alt="A breathtaking aerial view of a secluded turquoise cove in the Mediterranean, where crystal clear water meets pristine white sands. The scene is bathed in golden hour sunlight, creating a warm and adventurous mood typical of high-end travel photography. The lighting is soft yet high-contrast, emphasizing the textures of the limestone cliffs and the gentle ripples of the sea. The overall aesthetic is professional, aspirational, and deeply serene, capturing the essence of the Traveloop brand." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQ21ekOIv_iw6AjdnJ-VQrB6lrtCqo8KZTQGO8dDK3F7w99MwyFH_29k_dKSp1yfEmeq3Mnz6L5dUxi8qSrGg1g1VBJVJJ4DIaTMJuCzhNAdX6GqO4o-7OPg_U8aM5_ILjWF88wfTMadfulYB_4gfVBm4TaGknTXS6jwmWKG0MauSzwks8kSk1wuM3vFGtGNsAwZvHzozbnNJBpjPRYwcN0vlfuunyG2Z1GH40-BJ-eh7v-BDL3HJFzr3XfqTsp-KaoEE01FOdzCih"/>
+<div class="absolute inset-0 hero-gradient"></div>
+</div>
+<!-- Contextual Branding & Testimonial -->
+<div class="relative z-10 flex flex-col justify-between p-margin-desktop h-full w-full">
+<div class="flex items-center gap-2">
+<span class="font-display-lg text-headline-md text-white">Traveloop</span>
+<span class="px-3 py-1 bg-white/20 backdrop-blur-md rounded-full text-white font-label-sm text-label-sm border border-white/30">Explorer Edition</span>
+</div>
+<div class="max-w-md">
+<span class="material-symbols-outlined text-white text-4xl mb-4" style="font-variation-settings: 'FILL' 1;">format_quote</span>
+<h2 class="font-headline-md text-headline-md text-white mb-6">"The best journeys are the ones that take us into the unknown, planned with precision."</h2>
+<div class="flex items-center gap-4">
+<div class="h-12 w-12 rounded-full border-2 border-white overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A professional close-up portrait of a woman in her late 20s with a confident and warm expression, representing a modern traveler. She is framed against a soft-focus background of an outdoor cafe in Europe. The lighting is natural and flattering, highlighting her friendly demeanor. The image style is editorial and high-quality, aligning with a premium travel application's user persona." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXEqrIeI3KOnPbWxzKbbPNnwPF4YN7JPqthTPBKD10EOIrCv5wdCDVaiO3oDTfcCD81LW7vvkVpB_f6ISrEbGG2qqYmVNV2ArmaiF4udGU28OIG7_6AkipeW8skuqQmzV_75m78JarekFCnKYnk0QdrqioNAf7dG-fXMV4cj7VgamK0vxKLAGNqDv9a8zVqziJfhyYoFAnPkaQon5hv6dLy2BGSg90H0kZ9NqSuh9d3zULtsKruAPXU-1JOxNHuzHzxdWn34_KMnvC"/>
+</div>
+<div>
+<p class="font-label-md text-label-md text-white">Elena Rodriguez</p>
+<p class="font-label-sm text-label-sm text-white/70">Solo Traveler &amp; Curator</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Right Column: Entry Form -->
+<section class="w-full md:w-1/2 lg:w-2/5 flex items-center justify-center p-6 md:p-margin-desktop bg-surface-container-lowest">
+<div class="w-full max-w-sm flex flex-col gap-8">
+<!-- Header Text -->
+<div class="space-y-2">
+<h3 class="font-headline-md text-headline-md text-primary">Welcome back</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Continue your journey with Traveloop.</p>
+</div>
+<!-- Form -->
+<form class="space-y-5">
+<div class="space-y-4">
+<!-- Email Input -->
+<div class="group">
+<label class="block font-label-sm text-label-sm text-on-surface-variant mb-2 px-1" for="email">Email</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">mail</span>
+<input class="w-full pl-12 pr-4 py-3.5 bg-surface border border-outline-variant rounded-xl focus:ring-2 focus:ring-secondary-container focus:border-secondary-container transition-all outline-none font-body-md text-body-md" id="email" placeholder="explorer@traveloop.com" type="email"/>
+</div>
+</div>
+<!-- Password Input -->
+<div class="group">
+<div class="flex justify-between items-center mb-2 px-1">
+<label class="block font-label-sm text-label-sm text-on-surface-variant" for="password">Password</label>
+<a class="font-label-sm text-label-sm text-secondary hover:underline" href="#">Forgot password?</a>
+</div>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">lock</span>
+<input class="w-full pl-12 pr-4 py-3.5 bg-surface border border-outline-variant rounded-xl focus:ring-2 focus:ring-secondary-container focus:border-secondary-container transition-all outline-none font-body-md text-body-md" id="password" placeholder="••••••••" type="password"/>
+</div>
+</div>
+</div>
+<!-- CTA Buttons -->
+<div class="pt-2">
+<button class="w-full py-4 bg-secondary-container text-on-secondary-container font-label-md text-label-md rounded-xl shadow-lg hover:brightness-110 active:scale-[0.98] transition-all" type="submit">
+                            Sign In
+                        </button>
+</div>
+</form>
+<!-- Divider -->
+<div class="relative flex items-center">
+<div class="flex-grow border-t border-outline-variant"></div>
+<span class="flex-shrink mx-4 font-label-sm text-label-sm text-outline">or continue with</span>
+<div class="flex-grow border-t border-outline-variant"></div>
+</div>
+<!-- Social Logins -->
+<div class="grid grid-cols-2 gap-4">
+<button class="flex items-center justify-center gap-3 py-3 px-4 border border-outline-variant rounded-xl hover:bg-surface-variant/30 transition-colors active:scale-[0.98]">
+<svg class="w-5 h-5" viewbox="0 0 24 24">
+<path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"></path>
+<path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"></path>
+<path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.25.81-.59z" fill="#FBBC05"></path>
+<path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"></path>
+</svg>
+<span class="font-label-md text-label-md">Google</span>
+</button>
+<button class="flex items-center justify-center gap-3 py-3 px-4 border border-outline-variant rounded-xl hover:bg-surface-variant/30 transition-colors active:scale-[0.98]">
+<svg class="w-5 h-5 fill-current" viewbox="0 0 24 24">
+<path d="M17.05 20.28c-.96.95-2.04 1.44-3.23 1.44-1.14 0-2.14-.44-3-1.31-.88.87-1.9 1.31-3.04 1.31-1.19 0-2.27-.48-3.23-1.44C3.6 19.31 3.12 18.23 3.12 17.04c0-2.83 1.63-5.74 3.47-7.58 1.49-1.49 3.33-2.23 5.51-2.23.63 0 1.2.06 1.7.17 1.43-.91 2.91-1.37 4.43-1.37.89 0 1.67.24 2.33.72.66.48.99 1.11.99 1.88 0 .5-.13.94-.38 1.31-.25.37-.58.62-1 .74l.11.23c.31.63.47 1.3.47 2s-.22 1.37-.66 2.09c-.44.72-1.02 1.36-1.74 1.93-.72.57-1.35.86-1.9.86-.34 0-.61-.13-.81-.38-.2-.25-.3-.55-.3-.9 0-.35.12-.66.36-.93.24-.27.53-.4.87-.4.24 0 .44.06.6.17.16.11.24.23.24.36 0 .04-.01.09-.03.14l-.04.09h.12c.15 0 .34-.07.56-.22.22-.15.42-.36.6-.62.18-.26.27-.58.27-.96 0-.64-.26-1.34-.78-2.1-.52-.76-1.35-1.55-2.49-2.37-1.14-.82-2.15-1.23-3.03-1.23-1.25 0-2.31.42-3.18 1.25-.87.83-1.3 1.95-1.3 3.37 0 1.87.52 3.6 1.55 5.18 1.03 1.58 2.21 2.37 3.53 2.37.52 0 .97-.13 1.35-.4s.69-.53.93-.8l.21-.26.21.26c.24.27.55.54.93.8s.83.4 1.35.4c1.32 0 2.5-1.06 3.53-3.18.23-.46.34-.9.34-1.31 0-.35-.1-.65-.3-.9-.2-.25-.47-.38-.81-.38-.34 0-.63.13-.87.4-.24.27-.36.58-.36.93 0 .35.1.65.3.9.2.25.47.38.81.38z"></path>
+</svg>
+<span class="font-label-md text-label-md">Apple</span>
+</button>
+</div>
+<!-- Footer Link -->
+<p class="text-center font-body-md text-body-md text-on-surface-variant">
+                    New to Traveloop? 
+                    <a class="text-secondary font-bold hover:underline transition-all" href="#">Create account</a>
+</p>
+</div>
+</section>
+</main>
+<!-- Simple Footer for Legal -->
+<footer class="fixed bottom-0 left-0 w-full md:w-1/2 lg:w-2/5 py-6 px-margin-desktop bg-transparent pointer-events-none">
+<div class="flex flex-col md:flex-row justify-between items-center gap-4 pointer-events-auto">
+<p class="font-label-sm text-label-sm text-outline">© 2024 Traveloop Technologies.</p>
+<div class="flex gap-4">
+<a class="font-label-sm text-label-sm text-outline hover:text-primary transition-colors" href="#">Privacy</a>
+<a class="font-label-sm text-label-sm text-outline hover:text-primary transition-colors" href="#">Terms</a>
+</div>
+</div>
+</footer>
+</body></html>

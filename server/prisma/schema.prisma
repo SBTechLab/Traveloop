@@ -1,0 +1,136 @@
+// Traveloop — Prisma Schema (SQLite)
+// Run: npx prisma db push
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                String    @id @default(uuid())
+  name              String
+  email             String    @unique
+  passwordHash      String
+  profilePhoto      String?
+  language          String    @default("en")
+  isAdmin           Boolean   @default(false)
+  isActive          Boolean   @default(true)
+  resetToken        String?
+  resetTokenExpiry  DateTime?
+  createdAt         DateTime  @default(now())
+
+  trips        Trip[]
+  notes        TripNote[]
+}
+
+model Trip {
+  id          String    @id @default(uuid())
+  userId      String
+  name        String
+  description String?
+  startDate   DateTime
+  endDate     DateTime
+  coverPhoto  String?
+  isPublic    Boolean   @default(false)
+  shareSlug   String?   @unique
+  budgetCap   Float?
+  createdAt   DateTime  @default(now())
+
+  user        User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  stops       Stop[]
+  packingItems PackingItem[]
+  notes       TripNote[]
+  budget      TripBudget?
+}
+
+model City {
+  id          String     @id @default(uuid())
+  name        String
+  country     String
+  region      String
+  costIndex   Float      // 1 (cheap) to 5 (expensive)
+  popularity  Float      // 1-5 stars
+  coverPhoto  String?
+  description String?
+
+  stops       Stop[]
+  activities  Activity[]
+}
+
+model Stop {
+  id            String    @id @default(uuid())
+  tripId        String
+  cityId        String
+  arrivalDate   DateTime
+  departureDate DateTime
+  order         Int       @default(0)
+
+  trip          Trip           @relation(fields: [tripId], references: [id], onDelete: Cascade)
+  city          City           @relation(fields: [cityId], references: [id])
+  stopActivities StopActivity[]
+  notes         TripNote[]
+}
+
+model Activity {
+  id            String   @id @default(uuid())
+  cityId        String
+  name          String
+  type          String   // sightseeing | food | adventure | cultural
+  cost          Float
+  durationHours Float
+  description   String?
+  imageUrl      String?
+
+  city          City           @relation(fields: [cityId], references: [id])
+  stopActivities StopActivity[]
+}
+
+model StopActivity {
+  id            String    @id @default(uuid())
+  stopId        String
+  activityId    String
+  scheduledTime String?   // e.g. "09:00"
+  notes         String?
+
+  stop          Stop     @relation(fields: [stopId], references: [id], onDelete: Cascade)
+  activity      Activity @relation(fields: [activityId], references: [id])
+}
+
+model PackingItem {
+  id        String  @id @default(uuid())
+  tripId    String
+  name      String
+  category  String  // clothing | documents | electronics | toiletries | other
+  isPacked  Boolean @default(false)
+
+  trip      Trip    @relation(fields: [tripId], references: [id], onDelete: Cascade)
+}
+
+model TripNote {
+  id        String   @id @default(uuid())
+  tripId    String
+  stopId    String?
+  userId    String
+  content   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  trip      Trip     @relation(fields: [tripId], references: [id], onDelete: Cascade)
+  stop      Stop?    @relation(fields: [stopId], references: [id], onDelete: SetNull)
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model TripBudget {
+  id            String  @id @default(uuid())
+  tripId        String  @unique
+  transportCost Float   @default(0)
+  stayCost      Float   @default(0)
+  mealsCost     Float   @default(0)
+  miscCost      Float   @default(0)
+
+  trip          Trip    @relation(fields: [tripId], references: [id], onDelete: Cascade)
+}
