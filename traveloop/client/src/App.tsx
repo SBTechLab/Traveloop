@@ -4,6 +4,7 @@ import { Toaster } from 'react-hot-toast';
 import { AuthProvider, useAuth } from './store/AuthContext';
 import Navbar from './components/Navbar';
 import { LoginPage, SignupPage } from './pages/AuthPage';
+import ResetPasswordPage from './pages/ResetPasswordPage';
 import Dashboard from './pages/Dashboard';
 import TripList from './pages/TripList';
 import CreateTrip from './pages/CreateTrip';
@@ -64,6 +65,7 @@ function AppRoutes() {
     <Routes>
       {/* Public routes */}
       <Route path="/share/:shareSlug" element={<SharedItinerary />} />
+      <Route path="/reset-password" element={<ResetPasswordPage />} />
 
       {/* Auth routes */}
       <Route element={<AuthLayout />}>

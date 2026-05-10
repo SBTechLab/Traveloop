@@ -65,10 +65,10 @@ export default function TripNotes() {
     <div className="page-container max-w-3xl">
       <div className="flex items-center gap-4 mb-8">
         <div>
-          <h1 className="text-3xl font-bold text-gray-100">📝 Trip Journal</h1>
+          <h1 className="text-3xl font-bold text-gray-100">Trip Journal</h1>
           <p className="text-gray-500 mt-1">{trip?.name} · {notes.length} notes</p>
         </div>
-        <Link to={`/trips/${id}/build`} className="btn-secondary text-sm ml-auto">← Back to Builder</Link>
+        <Link to={`/trips/${id}`} className="btn-secondary text-sm ml-auto">← Back to Trip</Link>
       </div>
 
       {/* Add Note */}
@@ -95,7 +95,7 @@ export default function TripNotes() {
         <div className="flex justify-between items-center">
           <span className="text-xs text-gray-600">{content.length} characters</span>
           <button onClick={handleAdd} disabled={adding || !content.trim()} className="btn-primary text-sm">
-            {adding ? '💾 Saving...' : '💾 Save Note'}
+            {adding ? 'Saving...' : 'Save Note'}
           </button>
         </div>
       </div>
@@ -123,9 +123,9 @@ export default function TripNotes() {
                 <div className="flex gap-2 flex-shrink-0">
                   {editingId !== note.id && (
                     <button onClick={() => { setEditingId(note.id); setEditContent(note.content); }}
-                      className="text-gray-600 hover:text-primary-300 text-xs transition-colors">✏️ Edit</button>
+                      className="text-gray-600 hover:text-primary-300 text-xs transition-colors">Edit</button>
                   )}
-                  <button onClick={() => handleDelete(note.id)} className="text-gray-600 hover:text-red-400 text-xs transition-colors">🗑️</button>
+                  <button onClick={() => handleDelete(note.id)} className="text-gray-600 hover:text-red-400 text-xs transition-colors">Delete</button>
                 </div>
               </div>
 

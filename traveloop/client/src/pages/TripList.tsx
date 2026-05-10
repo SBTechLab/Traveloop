@@ -32,7 +32,7 @@ export default function TripList() {
     <div className="page-container">
       <div className="flex items-center justify-between mb-8">
         <div>
-          <h1 className="text-3xl font-bold text-gray-100">✈️ My Trips</h1>
+          <h1 className="text-3xl font-bold text-gray-100">My Trips</h1>
           <p className="text-gray-500 mt-1">{trips.length} {trips.length === 1 ? 'trip' : 'trips'} planned</p>
         </div>
         <Link to="/trips/new" className="btn-primary flex items-center gap-2">

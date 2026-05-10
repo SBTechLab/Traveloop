@@ -35,7 +35,8 @@ export default function CreateTrip() {
   return (
     <div className="page-container max-w-2xl">
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-100">✈️ Plan New Trip</h1>
+        <button onClick={() => navigate('/trips')} className="flex items-center gap-1 text-gray-400 hover:text-gray-100 transition-colors mb-3 text-sm">← Back to Trips</button>
+        <h1 className="text-3xl font-bold text-gray-100">Plan New Trip</h1>
         <p className="text-gray-500 mt-1">Fill in the details to start building your adventure</p>
       </div>
 
@@ -95,7 +96,7 @@ export default function CreateTrip() {
         <div className="flex gap-3 pt-2">
           <button type="button" onClick={() => navigate(-1)} className="btn-secondary flex-1">Cancel</button>
           <button id="create-trip-submit" type="submit" disabled={loading} className="btn-primary flex-1 py-3">
-            {loading ? '⏳ Creating...' : '🚀 Create Trip'}
+            {loading ? 'Creating...' : 'Create Trip'}
           </button>
         </div>
       </form>

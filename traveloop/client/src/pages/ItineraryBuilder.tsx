@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import { format } from 'date-fns';
 import { DndContext, closestCenter, DragEndEvent } from '@dnd-kit/core';
@@ -35,13 +35,13 @@ function SortableStop({ stop, onDelete, onAddActivity }: { stop: any; onDelete: 
           </p>
           <div className="flex items-center gap-2 mt-2">
             <span className="badge bg-primary/20 text-primary-300 border border-primary/20">
-              🎯 {stop.stopActivities?.length || 0} activities
+              {stop.stopActivities?.length || 0} activities
             </span>
           </div>
         </div>
         <div className="flex gap-2 flex-shrink-0">
           <button onClick={() => onAddActivity(stop)} className="btn-accent text-xs py-1 px-3">+ Activity</button>
-          <button onClick={() => onDelete(stop.id)} className="btn-secondary text-xs py-1 px-2 hover:text-red-400">🗑️</button>
+          <button onClick={() => onDelete(stop.id)} className="btn-secondary text-xs py-1 px-2 hover:text-red-400">Delete</button>
         </div>
       </div>
       {/* Activities list */}
@@ -62,6 +62,7 @@ function SortableStop({ stop, onDelete, onAddActivity }: { stop: any; onDelete: 
 
 export default function ItineraryBuilder() {
   const { id } = useParams<{ id: string }>();
+  const navigate = useNavigate();
   const [trip, setTrip] = useState<any>(null);
   const [stops, setStops] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
@@ -151,12 +152,13 @@ export default function ItineraryBuilder() {
   return (
     <div className="page-container">
       <div className="flex items-center gap-4 mb-6">
+        <button onClick={() => navigate(`/trips/${id}`)} className="flex items-center gap-1 text-gray-400 hover:text-gray-100 transition-colors text-sm flex-shrink-0">← Back</button>
         <div className="flex-1">
-          <h1 className="text-2xl font-bold text-gray-100">🗺️ {trip?.name}</h1>
+          <h1 className="text-2xl font-bold text-gray-100">{trip?.name}</h1>
           <p className="text-gray-500 text-sm mt-1">{trip?.description}</p>
         </div>
-        <Link to={`/trips/${id}`} className="btn-secondary text-sm">👁 View</Link>
-        <Link to={`/trips/${id}/budget`} className="btn-secondary text-sm">💰 Budget</Link>
+        <Link to={`/trips/${id}`} className="btn-secondary text-sm">View</Link>
+        <Link to={`/trips/${id}/budget`} className="btn-secondary text-sm">Budget</Link>
       </div>
 
       {/* Quick Nav */}

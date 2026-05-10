@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import { getCityActivities, getCity, getTrips, addActivityToStop } from '../api';
 import LoadingSkeleton from '../components/LoadingSkeleton';
@@ -15,6 +15,7 @@ const TYPE_COLORS: Record<string, string> = {
 
 export default function ActivitySearch() {
   const { cityId } = useParams<{ cityId: string }>();
+  const navigate = useNavigate();
   const [city, setCity] = useState<any>(null);
   const [activities, setActivities] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
@@ -72,7 +73,8 @@ export default function ActivitySearch() {
           <img src={city.coverPhoto || 'https://images.unsplash.com/photo-1488085061387-422e29b40080?w=1200'} alt={city.name} className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-r from-gray-950/80 to-transparent" />
           <div className="absolute inset-0 p-6 flex flex-col justify-end">
-            <h1 className="text-2xl font-bold text-white">🎯 Activities in {city.name}</h1>
+            <button onClick={() => navigate('/cities')} className="flex items-center gap-1 text-gray-300 hover:text-white transition-colors mb-2 text-sm w-fit">← Back to Cities</button>
+            <h1 className="text-2xl font-bold text-white">Activities in {city.name}</h1>
             <p className="text-gray-300 text-sm">{city.country} · {activities.length} activities available</p>
           </div>
         </div>
@@ -83,7 +85,7 @@ export default function ActivitySearch() {
         {['', 'sightseeing', 'food', 'adventure', 'cultural'].map(type => (
           <button key={type} onClick={() => setTypeFilter(type)}
             className={`px-4 py-2 rounded-full text-sm border transition-all font-medium ${typeFilter === type ? 'bg-primary text-white border-primary' : 'border-gray-700 text-gray-400 hover:border-gray-500'}`}>
-            {type || 'All'} {type === 'sightseeing' ? '🏛️' : type === 'food' ? '🍽️' : type === 'adventure' ? '🧗' : type === 'cultural' ? '🎭' : ''}
+            {type || 'All'}
           </button>
         ))}
         <input type="number" placeholder="Max cost $" className="input-field w-32 py-2" value={maxCost} onChange={e => setMaxCost(e.target.value)} />

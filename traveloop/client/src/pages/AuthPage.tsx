@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
-import { login as apiLogin, signup as apiSignup } from '../api';
+import { login as apiLogin, signup as apiSignup, forgotPassword as apiForgotPassword } from '../api';
 import { useAuth } from '../store/AuthContext';
 
 function LoginPage() {
@@ -26,10 +26,20 @@ function LoginPage() {
     } finally { setLoading(false); }
   };
 
-  const handleForgot = (e: React.FormEvent) => {
+  const [forgotLoading, setForgotLoading] = useState(false);
+
+  const handleForgot = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast.success('Password reset link sent! (Demo: no email sent)');
-    setShowForgot(false);
+    if (!forgotEmail) { toast.error('Enter your email'); return; }
+    setForgotLoading(true);
+    try {
+      await apiForgotPassword(forgotEmail);
+      toast.success('Reset link sent! Check your email.');
+      setShowForgot(false);
+      setForgotEmail('');
+    } catch (err: any) {
+      toast.error(err.response?.data?.error || 'Failed to send reset email');
+    } finally { setForgotLoading(false); }
   };
 
   return (
@@ -86,7 +96,7 @@ function LoginPage() {
               </div>
               <div className="flex gap-2">
                 <button type="button" onClick={() => setShowForgot(false)} className="btn-secondary flex-1">Back</button>
-                <button type="submit" className="btn-primary flex-1">Send Reset Link</button>
+                <button type="submit" disabled={forgotLoading} className="btn-primary flex-1">{forgotLoading ? 'Sending...' : 'Send Reset Link'}</button>
               </div>
             </form>
           )}

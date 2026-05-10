@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import { getPackingItems, addPackingItem, updatePackingItem, deletePackingItem, resetPackingItems } from '../api';
 import LoadingSkeleton from '../components/LoadingSkeleton';
@@ -12,6 +12,7 @@ const CAT_COLORS: Record<string, string> = { clothing: 'bg-blue-500/20 text-blue
 
 export default function PackingChecklist() {
   const { id } = useParams<{ id: string }>();
+  const navigate = useNavigate();
   const [items, setItems] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [showAdd, setShowAdd] = useState(false);
@@ -71,11 +72,12 @@ export default function PackingChecklist() {
     <div className="page-container max-w-2xl">
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h1 className="text-3xl font-bold text-gray-100">🧳 Packing Checklist</h1>
+          <button onClick={() => navigate(`/trips/${id}`)} className="flex items-center gap-1 text-gray-400 hover:text-gray-100 transition-colors mb-1 text-sm">← Back to Trip</button>
+          <h1 className="text-3xl font-bold text-gray-100">Packing Checklist</h1>
           <p className="text-gray-500 mt-1">{packed} of {items.length} items packed</p>
         </div>
         <div className="flex gap-2">
-          <button onClick={() => setShowReset(true)} className="btn-secondary text-sm" disabled={items.length === 0}>↺ Reset</button>
+          <button onClick={() => setShowReset(true)} className="btn-secondary text-sm" disabled={items.length === 0}>Reset</button>
           <button onClick={() => setShowAdd(true)} className="btn-primary text-sm">+ Add Item</button>
         </div>
       </div>
@@ -86,7 +88,7 @@ export default function PackingChecklist() {
           <div className="flex items-center justify-between text-sm mb-2">
             <span className="text-gray-400">Packing Progress</span>
             <span className={`font-semibold ${packed === items.length ? 'text-accent' : 'text-primary-300'}`}>
-              {packed === items.length ? '🎉 All packed!' : `${Math.round((packed / items.length) * 100)}%`}
+              {packed === items.length ? 'All packed!' : `${Math.round((packed / items.length) * 100)}%`}
             </span>
           </div>
           <div className="w-full bg-gray-800 rounded-full h-3 overflow-hidden">

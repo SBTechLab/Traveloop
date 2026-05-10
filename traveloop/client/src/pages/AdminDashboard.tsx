@@ -38,6 +38,7 @@ export default function AdminDashboard() {
   return (
     <div className="page-container">
       <div className="flex items-center gap-3 mb-8">
+        <button onClick={() => navigate('/')} className="flex items-center gap-1 text-gray-400 hover:text-gray-100 transition-colors text-sm">← Back</button>
         <div className="w-10 h-10 bg-amber-500/20 rounded-xl flex items-center justify-center text-xl">⚡</div>
         <div>
           <h1 className="text-3xl font-bold text-gray-100">Admin Dashboard</h1>
