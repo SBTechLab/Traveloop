@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../store/AuthContext';
-import { useTheme } from '../store/ThemeContext';
 
 const NAV_LINKS = [
   { to: '/', label: 'Explore' },
@@ -12,7 +11,6 @@ const NAV_LINKS = [
 
 export default function Navbar() {
   const { user, logout } = useAuth();
-  const { theme, toggleTheme } = useTheme();
   const navigate = useNavigate();
   const location = useLocation();
   const [menuOpen, setMenuOpen] = useState(false);
@@ -49,23 +47,23 @@ export default function Navbar() {
 
         {/* Right side */}
         <div className="flex items-center gap-4">
-          {/* Theme Toggle */}
-          <button
-            onClick={toggleTheme}
-            className="w-10 h-10 flex items-center justify-center rounded-xl bg-surface-container border border-outline-variant hover:bg-surface-container-high transition-all text-on-surface-variant hover:text-primary active:scale-90"
-            title={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
-          >
-            <span className="material-symbols-outlined text-xl">
-              {theme === 'light' ? 'dark_mode' : 'light_mode'}
-            </span>
-          </button>
-
           <Link
             to="/trips/new"
             className="hidden md:flex items-center bg-primary-container text-on-primary-container px-4 py-2 rounded-lg text-sm font-semibold tracking-wide hover:opacity-90 active:scale-95 transition-all"
           >
             Create Trip
           </Link>
+
+          {user && (
+            <button
+              onClick={handleLogout}
+              className="hidden md:flex items-center gap-2 text-on-surface-variant hover:text-error transition-colors px-3 py-2 rounded-lg hover:bg-error/10"
+              title="Sign Out"
+            >
+              <span className="material-symbols-outlined text-xl">logout</span>
+              <span className="text-sm font-semibold">Logout</span>
+            </button>
+          )}
 
           {/* User Avatar */}
           <Link to="/profile" className="w-10 h-10 rounded-full overflow-hidden border border-outline-variant hover:ring-2 hover:ring-primary transition-all">

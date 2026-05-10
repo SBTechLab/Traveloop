@@ -1,22 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../store/AuthContext';
-import { useTheme } from '../store/ThemeContext';
-
-function ThemeToggle() {
-  const { theme, toggleTheme } = useTheme();
-  return (
-    <button
-      onClick={toggleTheme}
-      className="w-10 h-10 flex items-center justify-center rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all text-white active:scale-90"
-      title={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
-    >
-      <span className="material-symbols-outlined text-xl">
-        {theme === 'light' ? 'dark_mode' : 'light_mode'}
-      </span>
-    </button>
-  );
-}
 
 export default function HomePage() {
   const { user } = useAuth();
@@ -43,9 +27,9 @@ export default function HomePage() {
             <span className="material-symbols-outlined text-primary text-3xl font-fill">explore</span>
             <span className="font-serif text-3xl font-bold tracking-tight text-white">Traveloop</span>
           </div>
-          <div className="hidden md:flex items-center gap-10">
-            <a href="#philosophy" className="text-xs font-bold text-white/60 hover:text-primary uppercase tracking-[0.2em] transition-all">Philosophy</a>
-            <a href="#engine" className="text-xs font-bold text-white/60 hover:text-primary uppercase tracking-[0.2em] transition-all">The Engine</a>
+          <div className="hidden lg:flex items-center gap-10">
+            <a href="#philosophy" className="text-[11px] font-bold text-white/60 hover:text-primary uppercase tracking-[0.2em] transition-all">Philosophy</a>
+            <a href="#engine" className="text-[11px] font-bold text-white/60 hover:text-primary uppercase tracking-[0.2em] transition-all">The Engine</a>
             
             {user?.isAdmin && (
               <Link
@@ -59,24 +43,22 @@ export default function HomePage() {
 
             {!user ? (
               <>
-                <Link to="/login" className="text-xs font-bold text-white/60 hover:text-primary uppercase tracking-[0.2em] transition-all">Login</Link>
-                <Link to="/signup" className="bg-primary text-on-primary px-10 py-3.5 rounded-2xl text-xs font-bold uppercase tracking-[0.2em] hover:brightness-110 active:scale-95 transition-all shadow-xl shadow-primary/20">
+                <Link to="/login" className="text-[11px] font-bold text-white/60 hover:text-primary uppercase tracking-[0.2em] transition-all">Login</Link>
+                <Link to="/signup" className="bg-primary text-on-primary px-8 py-3 rounded-2xl text-[11px] font-bold uppercase tracking-[0.2em] hover:brightness-110 active:scale-95 transition-all shadow-xl shadow-primary/20">
                   Join the Expedition
                 </Link>
               </>
             ) : (
-              <Link to="/trips" className="bg-primary text-on-primary px-10 py-3.5 rounded-2xl text-xs font-bold uppercase tracking-[0.2em] hover:brightness-110 active:scale-95 transition-all shadow-xl shadow-primary/20">
+              <Link to="/trips" className="bg-primary text-on-primary px-8 py-3 rounded-2xl text-[11px] font-bold uppercase tracking-[0.2em] hover:brightness-110 active:scale-95 transition-all shadow-xl shadow-primary/20">
                 Go to Dashboard
               </Link>
             )}
-
-            <ThemeToggle />
           </div>
-          <button className="md:hidden material-symbols-outlined text-white text-3xl">menu</button>
+          <button className="lg:hidden material-symbols-outlined text-white text-3xl">menu</button>
         </nav>
 
         {/* Hero Copy */}
-        <div className="relative z-10 max-w-6xl mt-24">
+        <div className="relative z-10 max-w-6xl mt-32">
           <div className="inline-flex items-center gap-3 px-6 py-2.5 rounded-full bg-white/5 border border-white/10 mb-10 animate-fade-in backdrop-blur-md">
             <span className="bg-primary w-2 h-2 rounded-full animate-ping"></span>
             <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-primary">Intelligence Redefined</span>
@@ -219,6 +201,10 @@ export default function HomePage() {
               <a href="#" className="hover:text-primary transition-colors">Activities</a>
               <a href="#" className="hover:text-primary transition-colors">Itineraries</a>
               <a href="#" className="hover:text-primary transition-colors">Budgeting</a>
+              <Link to="/admin/login" className="text-amber-500/60 hover:text-amber-500 transition-colors flex items-center gap-1">
+                <span className="material-symbols-outlined text-sm">shield_person</span>
+                Admin Portal
+              </Link>
             </div>
           </div>
           <div className="space-y-6">

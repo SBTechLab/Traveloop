@@ -87,9 +87,15 @@ function LoginPage() {
 
         <div className="w-full max-w-md relative z-10">
           {/* Mobile Branding */}
-          <div className="lg:hidden flex items-center gap-3 mb-12">
-            <span className="material-symbols-outlined text-primary text-4xl font-fill">explore</span>
-            <span className="font-serif text-3xl font-bold text-on-surface">Traveloop</span>
+          <div className="flex items-center justify-between mb-12">
+            <div className="flex items-center gap-3">
+              <span className="material-symbols-outlined text-primary text-4xl font-fill">explore</span>
+              <span className="font-serif text-3xl font-bold text-on-surface">Traveloop</span>
+            </div>
+            <Link to="/" className="text-[10px] font-bold text-on-surface-variant hover:text-primary uppercase tracking-widest flex items-center gap-2 transition-colors">
+              <span className="material-symbols-outlined text-sm">arrow_back</span>
+              Back to Home
+            </Link>
           </div>
 
           <div className="mb-12">
@@ -186,7 +192,11 @@ function LoginPage() {
       </section>
 
       {/* Mini Footer */}
-      <footer className="fixed bottom-8 right-12 hidden lg:block opacity-40">
+      <footer className="fixed bottom-8 right-12 hidden lg:flex items-center gap-6 opacity-40">
+        <Link to="/admin/login" className="text-[10px] font-bold text-on-surface-variant hover:text-amber-500 uppercase tracking-widest flex items-center gap-1 transition-colors">
+          <span className="material-symbols-outlined text-xs">shield_person</span>
+          Admin Access
+        </Link>
         <p className="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest">
           © 2024 Traveloop Inc. • System v3.0 • Privacy • Terms
         </p>
@@ -249,9 +259,15 @@ function SignupPage() {
 
         <div className="w-full max-w-md relative z-10">
           {/* Mobile Branding */}
-          <div className="lg:hidden flex items-center gap-3 mb-12">
-            <span className="material-symbols-outlined text-primary text-4xl font-fill">explore</span>
-            <span className="font-serif text-3xl font-bold text-on-surface">Traveloop</span>
+          <div className="flex items-center justify-between mb-12">
+            <div className="flex items-center gap-3">
+              <span className="material-symbols-outlined text-primary text-4xl font-fill">explore</span>
+              <span className="font-serif text-3xl font-bold text-on-surface">Traveloop</span>
+            </div>
+            <Link to="/" className="text-[10px] font-bold text-on-surface-variant hover:text-primary uppercase tracking-widest flex items-center gap-2 transition-colors">
+              <span className="material-symbols-outlined text-sm">arrow_back</span>
+              Back to Home
+            </Link>
           </div>
 
           <div className="mb-12">

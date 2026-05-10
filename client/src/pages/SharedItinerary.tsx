@@ -5,7 +5,6 @@ import { format } from 'date-fns';
 import { getSharedTrip, copySharedTrip } from '../api';
 import LoadingSkeleton from '../components/LoadingSkeleton';
 import { useAuth } from '../store/AuthContext';
-import { useTheme } from '../store/ThemeContext';
 
 const TYPE_ICONS: Record<string, string> = { 
   sightseeing: '🏛️', 
@@ -20,7 +19,6 @@ export default function SharedItinerary() {
   const [loading, setLoading] = useState(true);
   const [copying, setCopying] = useState(false);
   const { user } = useAuth();
-  const { theme, toggleTheme } = useTheme();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -73,15 +71,6 @@ export default function SharedItinerary() {
         <div className="max-w-7xl mx-auto h-full px-6 flex items-center justify-between">
           <Link to="/" className="font-serif text-xl font-bold text-primary">Traveloop</Link>
           <div className="flex items-center gap-3">
-             <button
-               onClick={toggleTheme}
-               className="w-10 h-10 flex items-center justify-center rounded-xl bg-surface-container border border-outline-variant hover:bg-surface-container-high transition-all text-on-surface-variant hover:text-primary active:scale-90"
-               title={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
-             >
-               <span className="material-symbols-outlined text-xl">
-                 {theme === 'light' ? 'dark_mode' : 'light_mode'}
-               </span>
-             </button>
              <div className="hidden sm:flex gap-2">
                 <a href={twitterUrl} target="_blank" rel="noopener noreferrer" className="p-2 rounded-lg bg-surface-container-low border border-outline-variant/30 hover:bg-surface-container transition-colors">
                   <span className="material-symbols-outlined text-sm">share</span>

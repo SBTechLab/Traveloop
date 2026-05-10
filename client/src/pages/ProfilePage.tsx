@@ -117,6 +117,16 @@ export default function ProfilePage() {
                 <span className="material-symbols-outlined font-fill">auto_awesome</span>
                 <span className="text-sm font-bold uppercase tracking-widest">Preferences</span>
               </button>
+
+              <div className="pt-8 border-t border-outline-variant/10 mt-4">
+                <button 
+                  onClick={() => { logout(); navigate('/login'); }}
+                  className="w-full flex items-center gap-4 px-6 py-4 rounded-2xl text-error hover:bg-error/10 transition-all"
+                >
+                  <span className="material-symbols-outlined">logout</span>
+                  <span className="text-sm font-bold uppercase tracking-widest">Sign Out</span>
+                </button>
+              </div>
             </nav>
 
             <div className="mt-20 p-8 rounded-3xl bg-primary-container text-on-primary-container shadow-xl">
