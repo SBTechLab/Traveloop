@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import { format, eachDayOfInterval } from 'date-fns';
 import { getTrip } from '../api';
@@ -17,6 +17,7 @@ const TYPE_COLORS: Record<string, string> = {
 
 export default function ItineraryView() {
   const { id } = useParams<{ id: string }>();
+  const navigate = useNavigate();
   const [trip, setTrip] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [view, setView] = useState<View>('list');
@@ -36,6 +37,7 @@ export default function ItineraryView() {
 
   return (
     <div className="page-container">
+      <button onClick={() => navigate('/trips')} className="flex items-center gap-1 text-gray-400 hover:text-gray-100 transition-colors mb-4 text-sm">← Back to Trips</button>
       {/* Header */}
       <div className="relative overflow-hidden rounded-2xl mb-8 h-48">
         <img src={trip.coverPhoto || 'https://images.unsplash.com/photo-1488085061387-422e29b40080?w=1200'} alt={trip.name} className="w-full h-full object-cover" />
@@ -50,17 +52,17 @@ export default function ItineraryView() {
 
       {/* Actions + View toggle */}
       <div className="flex items-center gap-3 mb-6 flex-wrap no-print">
-        <Link to={`/trips/${id}/build`} className="btn-secondary text-sm">✏️ Edit</Link>
-        <Link to={`/trips/${id}/budget`} className="btn-secondary text-sm">💰 Budget</Link>
-        <Link to={`/trips/${id}/packing`} className="btn-secondary text-sm">🧳 Packing</Link>
-        <Link to={`/trips/${id}/notes`} className="btn-secondary text-sm">📝 Notes</Link>
+        <Link to={`/trips/${id}/build`} className="btn-secondary text-sm">Edit</Link>
+        <Link to={`/trips/${id}/budget`} className="btn-secondary text-sm">Budget</Link>
+        <Link to={`/trips/${id}/packing`} className="btn-secondary text-sm">Packing</Link>
+        <Link to={`/trips/${id}/notes`} className="btn-secondary text-sm">Notes</Link>
         {trip.isPublic && trip.shareSlug && (
-          <button onClick={() => { navigator.clipboard.writeText(`${window.location.origin}/share/${trip.shareSlug}`); toast.success('Share link copied!'); }} className="btn-accent text-sm">🔗 Copy Share Link</button>
+          <button onClick={() => { navigator.clipboard.writeText(`${window.location.origin}/share/${trip.shareSlug}`); toast.success('Share link copied!'); }} className="btn-accent text-sm">Copy Share Link</button>
         )}
-        <button onClick={() => window.print()} className="btn-secondary text-sm ml-auto">🖨️ Print</button>
+        <button onClick={() => window.print()} className="btn-secondary text-sm ml-auto">Print</button>
         <div className="flex rounded-lg overflow-hidden border border-gray-700">
-          <button onClick={() => setView('list')} className={`px-3 py-1.5 text-sm transition-colors ${view === 'list' ? 'bg-primary text-white' : 'text-gray-400 hover:text-gray-200'}`}>☰ List</button>
-          <button onClick={() => setView('calendar')} className={`px-3 py-1.5 text-sm transition-colors ${view === 'calendar' ? 'bg-primary text-white' : 'text-gray-400 hover:text-gray-200'}`}>📅 Calendar</button>
+          <button onClick={() => setView('list')} className={`px-3 py-1.5 text-sm transition-colors ${view === 'list' ? 'bg-primary text-white' : 'text-gray-400 hover:text-gray-200'}`}>List</button>
+          <button onClick={() => setView('calendar')} className={`px-3 py-1.5 text-sm transition-colors ${view === 'calendar' ? 'bg-primary text-white' : 'text-gray-400 hover:text-gray-200'}`}>Calendar</button>
         </div>
       </div>
 

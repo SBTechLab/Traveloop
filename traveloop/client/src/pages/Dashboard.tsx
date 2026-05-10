@@ -51,7 +51,7 @@ export default function Dashboard() {
           <h1 className="text-4xl font-bold text-gray-100 mb-3">{user?.name}!</h1>
           <p className="text-gray-400 mb-6 max-w-xl">Ready to plan your next adventure? The world is waiting for you.</p>
           <Link to="/trips/new" className="btn-primary inline-flex items-center gap-2 py-3 px-6 text-base">
-            <span>✈️</span> Plan New Trip
+            Plan New Trip
           </Link>
         </div>
       </div>
@@ -108,7 +108,7 @@ export default function Dashboard() {
       {/* Recommended Destinations */}
       <div>
         <div className="flex items-center justify-between mb-5">
-          <h2 className="text-xl font-bold text-gray-100">🌍 Recommended Destinations</h2>
+          <h2 className="text-xl font-bold text-gray-100">Recommended Destinations</h2>
           <Link to="/cities" className="text-primary-400 hover:text-primary-300 text-sm font-medium transition-colors">Explore all →</Link>
         </div>
         {loading ? <LoadingSkeleton type="card" count={6} /> : (

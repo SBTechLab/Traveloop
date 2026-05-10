@@ -53,7 +53,7 @@ export default function TripCard({ trip, onDelete }: TripCardProps) {
             <button
               onClick={() => onDelete(trip.id)}
               className="btn-secondary text-sm py-1.5 px-3 hover:text-red-400 hover:border-red-500/50"
-            >🗑️</button>
+            >Delete</button>
           )}
         </div>
       </div>

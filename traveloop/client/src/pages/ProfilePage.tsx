@@ -87,7 +87,10 @@ export default function ProfilePage() {
 
   return (
     <div className="page-container max-w-2xl">
-      <h1 className="text-3xl font-bold text-gray-100 mb-8">👤 Profile & Settings</h1>
+      <div className="flex items-center gap-3 mb-8">
+        <button onClick={() => navigate(-1)} className="flex items-center gap-1 text-gray-400 hover:text-gray-100 transition-colors text-sm">← Back</button>
+        <h1 className="text-3xl font-bold text-gray-100">Profile & Settings</h1>
+      </div>
 
       <div className="card p-6 mb-6">
         <h2 className="font-semibold text-gray-200 mb-4">Personal Information</h2>
@@ -151,7 +154,7 @@ export default function ProfilePage() {
       </div>
 
       <div className="card p-6 border-red-500/20 bg-red-500/5">
-        <h2 className="font-semibold text-red-400 mb-2">⚠️ Danger Zone</h2>
+        <h2 className="font-semibold text-red-400 mb-2">Danger Zone</h2>
         <p className="text-gray-500 text-sm mb-4">Deleting your account is permanent and cannot be undone.</p>
         <button onClick={() => setShowDelete(true)} className="btn-danger text-sm">Delete My Account</button>
       </div>

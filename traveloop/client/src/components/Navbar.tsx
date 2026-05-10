@@ -3,9 +3,9 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../store/AuthContext';
 
 const NAV_LINKS = [
-  { to: '/', label: 'Dashboard', icon: '🏠' },
-  { to: '/trips', label: 'My Trips', icon: '✈️' },
-  { to: '/cities', label: 'Explore', icon: '🌍' },
+  { to: '/', label: 'Dashboard' },
+  { to: '/trips', label: 'My Trips' },
+  { to: '/cities', label: 'Explore' },
 ];
 
 export default function Navbar() {
@@ -41,13 +41,12 @@ export default function Navbar() {
                     : 'text-gray-400 hover:text-gray-100 hover:bg-gray-800'
                 }`}
               >
-                <span>{link.icon}</span>
                 {link.label}
               </Link>
             ))}
             {user?.isAdmin && (
               <Link to="/admin" className={`px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 flex items-center gap-1.5 ${location.pathname === '/admin' ? 'bg-amber-500/20 text-amber-300' : 'text-gray-400 hover:text-amber-300 hover:bg-amber-500/10'}`}>
-                <span>⚡</span>Admin
+                Admin
               </Link>
             )}
           </div>
@@ -63,7 +62,7 @@ export default function Navbar() {
               <span className="hidden sm:block text-sm text-gray-300 font-medium">{user?.name}</span>
             </Link>
             <button onClick={handleLogout} className="text-gray-500 hover:text-red-400 text-sm transition-colors px-2 py-1.5 rounded-lg hover:bg-red-500/10" title="Logout">
-              ⬅️ Logout
+              Logout
             </button>
           </div>
         </div>

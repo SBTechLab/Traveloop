@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import { PieChart, Pie, Cell, BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Legend } from 'recharts';
 import { format, differenceInDays } from 'date-fns';
@@ -10,6 +10,7 @@ const COLORS = ['#4F46E5', '#10B981', '#F59E0B', '#EF4444'];
 
 export default function BudgetPage() {
   const { id } = useParams<{ id: string }>();
+  const navigate = useNavigate();
   const [trip, setTrip] = useState<any>(null);
   const [budget, setBudget] = useState<any>(null);
   const [form, setForm] = useState({ transportCost: '0', stayCost: '0', mealsCost: '0', miscCost: '0', budgetCap: '' });
@@ -71,7 +72,8 @@ export default function BudgetPage() {
 
   return (
     <div className="page-container">
-      <h1 className="text-3xl font-bold text-gray-100 mb-2">💰 Budget Breakdown</h1>
+      <button onClick={() => navigate(`/trips/${id}`)} className="flex items-center gap-1 text-gray-400 hover:text-gray-100 transition-colors mb-4 text-sm">← Back to Trip</button>
+      <h1 className="text-3xl font-bold text-gray-100 mb-2">Budget Breakdown</h1>
       <p className="text-gray-500 mb-8">{trip?.name}</p>
 
       {/* Over budget warning */}
@@ -136,7 +138,7 @@ export default function BudgetPage() {
             </div>
           </div>
           <button onClick={handleSave} disabled={saving} className="btn-primary w-full mt-2">
-            {saving ? '💾 Saving...' : '💾 Save Budget'}
+            {saving ? 'Saving...' : 'Save Budget'}
           </button>
         </div>
 

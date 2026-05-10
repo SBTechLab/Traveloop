@@ -5,6 +5,8 @@ export const signup = (data: { name: string; email: string; password: string }) 
 export const login = (data: { email: string; password: string }) => api.post('/auth/login', data);
 export const logout = () => api.post('/auth/logout');
 export const getMe = () => api.get('/auth/me');
+export const forgotPassword = (email: string) => api.post('/auth/forgot-password', { email });
+export const resetPassword = (token: string, password: string) => api.post('/auth/reset-password', { token, password });
 
 // Trips
 export const getTrips = () => api.get('/trips');
